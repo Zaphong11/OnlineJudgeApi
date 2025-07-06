@@ -8,6 +8,7 @@ class Result(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     submission_id = Column(Integer, ForeignKey("submissions.id"), nullable=False)
+    output = Column(String, nullable=True)
     status = Column(String, nullable=False)
     time = Column(Integer, nullable=True)
     memory = Column(Integer, nullable=True)

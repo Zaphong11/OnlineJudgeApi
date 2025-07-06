@@ -16,3 +16,15 @@ class SubmissionResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class ResultResponse(BaseModel):
+    id: int
+    submission_id: int
+    status: str
+    time: Optional[int]
+    memory: Optional[int]
+    message: Optional[str]
+    output: Optional[str]
+
+    class Config:
+        from_attributes = True
