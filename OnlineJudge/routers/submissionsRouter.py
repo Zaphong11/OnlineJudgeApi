@@ -40,6 +40,7 @@ async def create_submission(submission: SubmissionRequest, db: db_dependency):
             language_id=submission.language_id,
             source_code=submission.code,
             input_data=submission.input or "",
+            output_data=submission.output or "",
             time_limit=submission.time_limit / 1000,
             memory_limit=submission.memory_limit,
             db_session=db

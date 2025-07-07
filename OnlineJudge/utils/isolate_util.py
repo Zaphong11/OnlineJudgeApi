@@ -25,7 +25,7 @@ class IsolateUtil:
         cmd = f"isolate --box-id={self.box_id} --cleanup"
         subprocess.run(cmd, shell=True, check=True, capture_output=True)
 
-    def run_code(self, language_id: int, source_code: str, input_data: str, time_limit: int, memory_limit: int, db_session: Session):
+    def run_code(self, language_id: int, source_code: str, input_data: str, output_data: str, time_limit: int, memory_limit: int, db_session: Session):
         # 1. Lấy thông tin ngôn ngữ
         lang: Language = db_session.query(Language).filter(Language.id == language_id).first()
         if not lang:
@@ -42,6 +42,11 @@ class IsolateUtil:
         input_file = os.path.join(self.box_path, "input.txt")
         with open(input_file, "w") as f:
             f.write(input_data if input_data is not None else "")
+
+        expected_output = os.path.join(self.box_path, "exp_output.txt")
+        with open(expected_output, "w") as f:
+            f.write(output_data if output_data is not None else "")
+        
         # 4. Biên dịch nếu cần
         if lang.judge_key in ["/usr/bin/g++", "/usr/bin/gcc"]:
             compile_cmd = (
@@ -55,17 +60,22 @@ class IsolateUtil:
                 f"--run -- {lang.judge_key} {file_name} -o program"
             )       
             result = subprocess.run(compile_cmd, shell=True, capture_output=True, text=True)
+
             if result.returncode != 0:
                 raise CompilationError(result.stderr)
             exec_cmd = f"./program"
+
         elif lang.judge_key == "javac":
             compile_cmd = f"isolate --box-id={self.box_id} --run -- javac {file_name}"
             result = subprocess.run(compile_cmd, shell=True, capture_output=True, text=True)
+
             if result.returncode != 0:
                 raise CompilationError(result.stderr)
             exec_cmd = f"java Main"
+
         elif lang.judge_key in ["/usr/bin/python3", "/usr/bin/node"]:
             exec_cmd = f"{lang.judge_key} {file_name}"
+
         else:
             raise UnsupportedLanguageError("Judge key not supported")
 
@@ -88,9 +98,21 @@ class IsolateUtil:
             with open(output_file, "r") as f:
                 output = f.read()
 
+        #so sánh output với expected_output nếu có
+        verdict = "Accepted"
+        expected = ""
+        if os.path.exists(expected_output):
+            with open(expected_output, "r") as f:
+                expected = f.read()
+            
+            if output.strip() != expected.strip():
+                verdict = "Wrong Answer"
+
+
         return {
-            "status": "Accepted",
+            "status": verdict,
             "stdout": result.stdout,
             "stderr": result.stderr,
-            "output": output
+            "output": output,
+            "expected_output": expected
         }
