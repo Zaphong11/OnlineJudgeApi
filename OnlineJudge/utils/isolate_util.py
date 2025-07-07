@@ -109,7 +109,7 @@ class IsolateUtil:
         #so sánh output với expected_output nếu có
         verdict = "Accepted"
         expected = ""
-        if os.path.exists(expected_output):
+        if output_data and os.path.exists(expected_output):
             with open(expected_output, "r") as f:
                 expected = f.read()
             
