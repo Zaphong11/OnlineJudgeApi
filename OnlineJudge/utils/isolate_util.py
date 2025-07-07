@@ -60,18 +60,26 @@ class IsolateUtil:
                 f"--run -- {lang.judge_key} {file_name} -o program"
             )       
             result = subprocess.run(compile_cmd, shell=True, capture_output=True, text=True)
-
             if result.returncode != 0:
                 raise CompilationError(result.stderr)
             exec_cmd = f"./program"
 
-        elif lang.judge_key == "javac":
-            compile_cmd = f"isolate --box-id={self.box_id} --run -- javac {file_name}"
+        elif lang.judge_key == "java":
+            compile_cmd = (
+                f"isolate --box-id={self.box_id} "
+                f"--dir=/usr/bin --dir=/bin "
+                f"--dir=/usr/lib --dir=/lib --dir=/lib64 "
+                f"--dir=/usr/lib/jvm --dir=/usr/share/java "
+                f"--dir=/usr/lib/jvm/java-21-openjdk-amd64/bin "
+                f"--dir=/usr/lib/jvm/java-21-openjdk-amd64/lib "
+                f"--run -- /usr/bin/javac {file_name}"
+            )
             result = subprocess.run(compile_cmd, shell=True, capture_output=True, text=True)
-
             if result.returncode != 0:
                 raise CompilationError(result.stderr)
-            exec_cmd = f"java Main"
+            exec_cmd = (
+                f"--run -- /usr/bin/java Main"
+            )
 
         elif lang.judge_key in ["/usr/bin/python3", "/usr/bin/node"]:
             exec_cmd = f"{lang.judge_key} {file_name}"

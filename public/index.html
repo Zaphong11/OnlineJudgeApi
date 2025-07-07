@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HPUni Code Editor - Dracula Theme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar px-3">
+        <span class="navbar-brand mb-0 h1">HPUni Online Code Editor</span>
+    </nav>
+
+    <!-- Main layout -->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Left Panel -->
+            <div class="col-md-3 left-panel">
+                <div class="mb-3">
+                    <label class="form-label">Input</label>
+                    <textarea class="form-control" rows="4" placeholder="Nhập input..."></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Expected Output</label>
+                    <textarea class="form-control" rows="4" placeholder="Kết quả mong đợi..."></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ngôn ngữ</label>
+                    <select class="form-select">
+                        <option value="cpp">C++</option>
+                        <option value="c">C</option>
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success">Run</button>
+                    <button class="btn btn-outline-light">Clear</button>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="col-md-9 right-panel">
+                <div class="mb-4">
+                    <h5>Code</h5>
+                    <textarea class="form-control" rows="30" placeholder="Viết mã tại đây..."></textarea>
+                </div>
+
+                <div>
+                    <h5>Result</h5>
+                    <textarea class="form-control" rows="8" readonly
+                        placeholder="Kết quả sẽ hiển thị tại đây..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        Author: Nguyễn Gia Phong |
+        <a href="https://github.com/Zaphong11">GitHub</a> |
+        <a href="https://www.facebook.com/nguyen.phong.966800">Facebook</a> |
+        <a href="mailto:phongnguyengia82@gmail.com">Email</a> |
+        <span>Phone: 0869278516</span>
+    </footer>
+
+</body>  
+
+</html>

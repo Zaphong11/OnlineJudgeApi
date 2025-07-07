@@ -1,0 +1,81 @@
+:root {
+    --bg-dark: #282a36;
+    --bg-panel: #44475a;
+    --text-main: #f8f8f2;
+    --accent-purple: #bd93f9;
+    --accent-pink: #ff79c6;
+    --accent-green: #50fa7b;
+    --accent-yellow: #f1fa8c;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.navbar {
+    background-color: #21222c;
+}
+
+.navbar-brand {
+    color: var(--accent-purple) !important;
+    font-weight: bold;
+}
+
+.left-panel {
+    background-color: var(--bg-panel);
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.right-panel {
+    background-color: var(--bg-dark);
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+textarea,
+select,
+input {
+    background-color: #3b3f52 !important;
+    color: var(--text-main) !important;
+    border: 1px solid #6272a4 !important;
+}
+
+h5,
+label {
+    color: var(--accent-yellow);
+}
+
+.btn-success {
+    background-color: var(--accent-green);
+    border: none;
+}
+
+.btn-outline-light {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--accent-purple);
+    color: #282a36;
+}
+
+footer {
+    background-color: #21222c;
+    color: var(--text-main);
+}
+
+footer a {
+    color: var(--accent-pink);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
