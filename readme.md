@@ -17,7 +17,7 @@
 - [Cấu trúc thư mục](#cấu-trúc-thư-mục)
 - [API Documentation](#api-documentation)
 - [Troubleshooting](#troubleshooting)
-- [License](#license)
+- [License](#License)
 
 ## 🎯 Giới thiệu
 
