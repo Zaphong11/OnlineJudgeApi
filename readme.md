@@ -4,7 +4,7 @@
 
 ## 📋 Mục lục
 
-- [Giới thiệu](#giới-thiệu)
+- [Giới thiệu](#🎯Giới thiệu)
 - [Công nghệ sử dụng](#công-nghệ-sử-dụng)
 - [Yêu cầu hệ thống](#yêu-cầu-hệ-thống)
 - [Cài đặt](#cài-đặt)
@@ -27,6 +27,10 @@ Online Judge API là một hệ thống backend mạnh mẽ cho phép:
 - Hỗ trợ nhiều ngôn ngữ lập trình (C, C++, Python, Java, etc.)
 - Quản lý bài tập và submissions
 - Giao diện frontend đơn giản với HTML/CSS/JS
+
+## 🖼️ Hình ảnh minh họa
+
+![img.png](img.png)
 
 ## 🛠 Công nghệ sử dụng
 
