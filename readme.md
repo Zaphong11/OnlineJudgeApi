@@ -209,19 +209,14 @@ touch .env
 DATABASE_URL=postgresql://postgres:root@localhost:5432/online_judge
 ```
 
-## 🎮 Chạy ứng dụng
-
-### Chạy Backend (FastAPI)
+#### Bước 5.3: Chạy Alembic migrations
 
 ```bash
-# Activate virtual environment (nếu dùng)
-source venv/bin/activate
+# Chạy migrations để tạo các bảng
+alembic upgrade head
 
-# Chạy với Uvicorn
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-
-# Hoặc nếu file chính có tên khác:
-# uvicorn app:app --reload --host 0.0.0.0 --port 8000
+# Kiểm tra trạng thái migrations
+alembic current
 ```
 
 ### Truy cập ứng dụng
@@ -233,49 +228,40 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ## 📁 Cấu trúc thư mục
 
 ```
-OnlineJudgeApi/
-├── main.py                 # Entry point của FastAPI
-├── app.py                  # Có thể là entry point
-├── requirements.txt        # Python dependencies
-├── .env                    # Environment variables (không commit)
-├── .env.example           # Template cho .env
-├── .gitignore
-├── README.md
-│
-├── models/                 # Database models
-│   ├── __init__.py
-│   ├── problem.py
-│   ├── submission.py
-│   └── user.py
-│
-├── routes/                 # API endpoints
-│   ├── __init__.py
-│   ├── problems.py
-│   ├── submissions.py
-│   └── users.py
-│
-├── services/               # Business logic
-│   ├── __init__.py
-│   ├── judge.py           # Isolate integration
-│   └── compiler.py
-│
-├── database/               # Database configuration
-│   ├── __init__.py
-│   └── connection.py
-│
-├── schemas/                # Pydantic schemas
-│   ├── __init__.py
-│   └── submission.py
-│
-└── public/                 # Frontend files
-    ├── index.html
-    ├── css/
-    │   └── style.css
-    ├── js/
-    │   ├── main.js
-    │   └── api.js
-    └── assets/
-        └── images/
+├── 📁 OnlineJudge                   // Thư mục chính của ứng dụng
+│   ├── 📁 alembic                   // Thư mục Alembic cho migrations
+│   │   ├── 📁 versions
+│   │   │   ├── 🐍 39f5ba7540ce_initial_migration.py
+│   │   │   └── 🐍 f7ef5f4d0d96_add_output_field_to_result.py
+│   │   ├── 📄 README
+│   │   ├── 🐍 env.py
+│   │   └── 📄 script.py.mako
+│   ├── 📁 core                      // Cấu hình chính
+│   │   └── 🐍 config.py
+│   ├── 📁 db                        // Cấu hình database
+│   │   ├── 🐍 __init__.py
+│   │   └── 🐍 database.py
+│   ├── 📁 models                    // Các model database
+│   │   ├── 🐍 __init__.py
+│   │   ├── 🐍 language.py
+│   │   ├── 🐍 result.py
+│   │   └── 🐍 submission.py
+│   ├── 📁 routers                   // Các route API
+│   │   └── 🐍 submissionsRouter.py
+│   ├── 📁 schemas                   // Các schema Pydantic
+│   │   ├── 🐍 request.py
+│   │   └── 🐍 response.py
+│   ├── 📁 utils                     // Các tiện ích
+│   │   └── 🐍 isolate_util.py
+│   ├── ⚙️ alembic.ini
+│   ├── 🐍 main.py                   // Entry point của ứng dụng
+│   └── 📄 requirements.txt          // Dependencies
+├── 📁 public                        // Thư mục frontend
+│   ├── 🌐 index.html
+│   ├── 📄 script.js
+│   └── 🎨 styles.css
+├── 📄 LICENSE
+└── 📝 readme.md
 ```
 
 ## 📚 API Documentation
