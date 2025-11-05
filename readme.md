@@ -4,7 +4,7 @@
 
 ## 📋 Mục lục
 
-- [Giới thiệu](#🎯Giới thiệu)
+- [Giới thiệu](#🎯Giới-thiệu)
 - [Công nghệ sử dụng](#công-nghệ-sử-dụng)
 - [Yêu cầu hệ thống](#yêu-cầu-hệ-thống)
 - [Cài đặt](#cài-đặt)
