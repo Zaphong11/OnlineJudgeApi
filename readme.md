@@ -17,8 +17,7 @@
 - [Cấu trúc thư mục](#cấu-trúc-thư-mục)
 - [API Documentation](#api-documentation)
 - [Troubleshooting](#troubleshooting)
-- [License](##License)
-
+- [License](##
 ## 🎯 Giới thiệu
 
 Online Judge API là một hệ thống backend mạnh mẽ cho phép:
